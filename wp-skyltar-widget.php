@@ -79,7 +79,10 @@ class o_skyltar_widget extends WP_Widget {
         #Title
         echo $args['before_title'] .$instance['title']. $args['after_title'];
 
-
+        #Input Letter Height
+        echo '<br>Bokstavshöjd i millimeter';
+        echo '<br><input type="text" value="0" class="sk-letter-height">';
+        echo '<br><select class="sk-color"><option value="red">Röd</option><option value="green">Grön<option value="blue">Blå</select>';
 
       echo '</div>'; //End widget wrapper
 
