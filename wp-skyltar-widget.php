@@ -22,28 +22,68 @@ class o_skyltar_widget extends WP_Widget {
     parent::__construct(false, $name = __('WP Skyltar Widget'));
   }
 
-  //Function form
-  function form() {
+  /**
+  * Function Form
+  * Displays & builds the widget's backend options.
+  *
+  * @since 1.0
+  * @param $instance Instances
+  */
+  function form($instance) {
 
-  }
+    #Variables
+    $title = '';
 
-  //Function update
-  function update() {
+    #Check instance of title -> Set title to backend title if it exists
+    if(isset($instance['title'])){
+      $title = $instance['title'];
+    }
+
+    #Backend input fields
+    echo '<p><label for="' .$this->get_field_id('title'). '">Titel:</label><br>';
+    echo '<input type="text" value="' .$title. '" name="' .$this->get_field_name('title'). '" id="' .$this->get_field_id('title'). '"></p>';
 
   }
 
   /**
-  * Function widget
+  * Function Update
+  * Updates the current information & values with the new ones.
   *
+  * @since 1.0
+  * @param $new_instance New instances
+  * @param $old_instance Old instances
+  */
+  function update($new_instance, $old_instance) {
+
+    #Set instances to the updated ones
+    $instance['title'] = $new_instance['title'];
+
+    #return updated instances
+    return $instance;
+  }
+
+  /**
+  * Function Widget
+  * Displays & builds the widget's fontend.
+  *
+  * @since 1.0
   * @param $args Arguments
   * @param $instance Instaces
   */
   function widget($args, $instance) {
-    ?>
-      <div class="widget wp-skyltar-widget">
-        <h2>Title</h2>
-      </div>
-    <?php
+      echo $args['before_widget']; //Start widget
+
+      #Widget Wrapper
+      echo '<div class="widget wp-skyltar-widget">';
+
+        #Title
+        echo $args['before_title'] .$instance['title']. $args['after_title'];
+
+
+
+      echo '</div>'; //End widget wrapper
+
+      echo $args['after_widget']; //End widget
   }
 
 }
