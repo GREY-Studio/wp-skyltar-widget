@@ -2,8 +2,13 @@
 
 By [Emil Olsson (GREY-Studio)](https://github.com/GREY-Studio/).
 
-[![Code Climate](http://img.shields.io/codeclimate/github/doge/wow.svg)](https://codeclimate.com/github/doge/wow)
-
 ## Description
+**Wordpress Skyltar Widget**
 
 ## Installation
+
+Add the project folder to the path:
+
+```php
+wordpress/wp-content/plugins
+```
