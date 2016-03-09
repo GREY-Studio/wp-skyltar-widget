@@ -58,7 +58,7 @@ class o_skyltar_widget extends WP_Widget {
     #Set instances to the updated ones
     $instance['title'] = $new_instance['title'];
 
-    #return updated instances
+    #Return updated instances
     return $instance;
   }
 
