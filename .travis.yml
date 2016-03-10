@@ -1,11 +1,4 @@
-env:
-  global:
-    - CI=true
-  matrix:
-    - TEST_DOC=false
-    - TEST_DOC=true
-
-  language: php
+ language: php
   php:
     - '5.4'
     - '5.5'
