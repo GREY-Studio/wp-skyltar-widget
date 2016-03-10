@@ -19,58 +19,57 @@
       $data,
       $path = object.templateUrl;
 
-  //---------------------------------------------
-  // Calculations
-  //---------------------------------------------
+   //---------------------------------------------
+   // Calculations
+   //---------------------------------------------
 
-  /**
-   * Function Calculate
-   *
-   * @since 1.0
-   * @param $input Input
-   */
-   function calculate($input) {
-     var $list = [],
-         $letter_height = $sk_lh.val(),
-         $input_red = $sk_red.val(),
-         $input_green = $sk_green.val(),
-         $input_blue = $sk_blue.val();
+   /**
+    * Function Calculate
+    *
+    * @since 1.0
+    * @param $input Input
+    */
+    function calculate($input) {
+      var $list = [],
+          $letter_height = $sk_lh.val(),
+          $input_red = $sk_red.val(),
+          $input_green = $sk_green.val(),
+          $input_blue = $sk_blue.val();
 
-     if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height)){
-       equation('bok_h');
-     }
+      if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height)){
+        equation('bok_h');
+      }
 
-     /**
-      * Function Equation
-      *
-      * @since 1.0
-      * @param $type Type
-      */
-     function equation($type) {
-       var $res_red,
-           $res_green,
-           $res_blue;
+      /**
+       * Function Equation
+       *
+       * @since 1.0
+       * @param $type Type
+       */
+      function equation($type) {
+        var $res_red,
+            $res_green,
+            $res_blue;
 
-       if($type == 'bok_h'){
+        if($type == 'bok_h'){
 
-         $res_red = $letter_height*$sk_red.data("percentage");
-         $res_green = $letter_height*$sk_green.data("percentage");
-         $res_blue = $letter_height*$sk_blue.data("percentage");
-       }
+          $res_red = $letter_height*$sk_red.data("percentage");
+          $res_green = $letter_height*$sk_green.data("percentage");
+          $res_blue = $letter_height*$sk_blue.data("percentage");
+        }
 
-       //Update the textfields
-       $sk_red.val($res_red.toFixed(2) + ' meter');
-       $sk_green.val($res_green.toFixed(2) + ' meter');
-       $sk_blue.val($res_blue.toFixed(2) + ' meter');
+        //Update the textfields
+        $sk_red.val($res_red.toFixed(2) + ' meter');
+        $sk_green.val($res_green.toFixed(2) + ' meter');
+        $sk_blue.val($res_blue.toFixed(2) + ' meter');
 
-     }
+      }
 
-   }
+    }
 
   //---------------------------------------------
   // Input Management
   //---------------------------------------------
-
 
 
   //---------------------------------------------
@@ -87,12 +86,11 @@
   function on_change(e) {
     var $this = $(this);
     calculate($this);
-    //alert($this.val() + " " + $this.hasClass('sk-red'));
   }
 
   //Function bindings
   function bindings() {
-    $input.on('keyup', on_change);
+   $input.on('keyup', on_change);
   }
 
   $(function() {
