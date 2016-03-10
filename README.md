@@ -17,6 +17,6 @@ On your Wordpress admin page go to **plugins (tillägg)** and activate **WP Skyl
 
 ![Imgur](http://i.imgur.com/U7uzSBh.png)
 
-Then, go to **appearance (Utseende)** and drag the element named **WP Skyltar Widget** to the preferred placement and drop it.
+Then, go to **appearance (utseende)** and drag the element named **WP Skyltar Widget** to the preferred placement and drop it.
 
-Click on the element to set further **options**, for example title etc.
+Click on the element to set further **options**, for example title, color percentages etc.

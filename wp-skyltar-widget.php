@@ -14,7 +14,7 @@ License: MIT
  *
  * @since 1.0
  */
- function load() {
+ function load($instance) {
 
    #Cascade Styling Sheets
    wp_register_style('style', plugins_url('wp-skyltar-style.css',__FILE__ ));
@@ -90,7 +90,6 @@ class o_skyltar_widget extends WP_Widget {
     //Blue
     echo '<label for="' .$this->get_field_id('blue'). '">Blå: </label>';
     echo '<input type="text" value="' .$blue. '" name="' .$this->get_field_name('blue'). '" id="' .$this->get_field_id('blue'). '"></p><br>';
-
   }
 
   /**
@@ -132,13 +131,13 @@ class o_skyltar_widget extends WP_Widget {
 
         #Input Letter Height
         echo '<br>Bokstavshöjd i millimeter';
-        echo '<br><input type="text" placeholder="0 millimeter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-letter-height">';
+        echo '<br><input type="text" placeholder="0" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-letter-height">';
 
         #Input Colors & Distance
-        echo "<br><br>Läsbar till avståndet";
-        echo '<br><input type="text" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-red">';
-        echo '<br><input type="text" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-green">';
-        echo '<br><input type="text" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-blue">';
+        echo "<br><br>Läsbarhet till avståndet";
+        echo '<br><input type="text" data-percentage="' .$instance['red']. '" placeholder="0" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-red">';
+        echo '<br><input type="text" data-percentage="' .$instance['green']. '" placeholder="0" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-green">';
+        echo '<br><input type="text" data-percentage="' .$instance['blue']. '" placeholder="0" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-blue">';
 
       echo '</div>'; //End widget wrapper
 
