@@ -13,4 +13,6 @@ env:
     - '7.0'
     - hhvm
     - nightly
+  env:
+    - 'localhost'
   script: phpunit wp-skyltar-widget.php
