@@ -1,11 +1,33 @@
 /**
 * Cascade Styling Sheets - wp-skyltar-widget
+* 
+* @since 1.0
 */
 
 /* wp-skyltar-css */
 
 .secondary.sidebar {
   width: 600px; /* During development */
+}
+
+.wp-skyltar-widget > input[type="text"] {
+  margin-top: 8px;
+}
+
+.wp-skyltar-widget > input[name="sk"] {
+  width: 500px;
+}
+
+input[type="text"].sk-red {
+  background: #f2dede;
+}
+
+input[type="text"].sk-green {
+  background: #dff0d8;
+}
+
+input[type="text"].sk-blue {
+  background: #d9edf7;
 }
 
 

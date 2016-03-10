@@ -9,11 +9,33 @@ License: MIT
 */
 
 /**
+ * Function Load
+ * Include CSS & JQuery files wp-skyltar-css & ... for widget styling
+ *
+ * @since 1.0
+ */
+ function load() {
+
+   #Cascade Styling Sheets
+   wp_register_style('style', plugins_url('wp-skyltar-style.css',__FILE__ ));
+   wp_enqueue_style('style');
+
+   #JQuery
+   //JQuery library include
+   wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js');
+   wp_enqueue_script('jquery');
+
+   //Widget jQuery script
+   wp_register_script( 'script', plugins_url('wp-skyltar-jquery.js',__FILE__ ));
+   wp_enqueue_script('script');
+
+ }
+
+/**
  * Class o_skyltar_widget -> Extends WP_Widget
  * Start instance when window loads the object and fire __construct.
  *
  * @since 1.0
- *
  */
 class o_skyltar_widget extends WP_Widget {
 
@@ -81,8 +103,13 @@ class o_skyltar_widget extends WP_Widget {
 
         #Input Letter Height
         echo '<br>Bokstavshöjd i millimeter';
-        echo '<br><input type="text" value="0" class="sk-letter-height">';
-        echo '<br><select class="sk-color"><option value="red">Röd</option><option value="green">Grön<option value="blue">Blå</select>';
+        echo '<br><input type="text" value="0 millimeter" class="sk-letter-height">';
+
+        #Input Colors & Distance
+        echo "<br><br>Läsbar till avståndet";
+        echo '<br><input type="text" name="sk" value="0 meter" class="sk-red">';
+        echo '<br><input type="text" name="sk" value="0 meter" class="sk-green">';
+        echo '<br><input type="text" name="sk" value="0 meter" class="sk-blue">';
 
       echo '</div>'; //End widget wrapper
 
@@ -95,6 +122,9 @@ class o_skyltar_widget extends WP_Widget {
 add_action('widgets_init', function() {
   register_widget('o_skyltar_widget');
 });
+
+//Add action on load of page, initiate function load
+add_action('widgets_init', 'load');
 
 
 ?>
