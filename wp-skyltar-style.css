@@ -1,6 +1,6 @@
 /**
 * Cascade Styling Sheets - wp-skyltar-widget
-* 
+*
 * @since 1.0
 */
 
@@ -30,6 +30,16 @@ input[type="text"].sk-blue {
   background: #d9edf7;
 }
 
+input[name="widget-o_skyltar_widget[2][blue]"] {
+  margin-left: 13px;  
+}
 
+input[name="widget-o_skyltar_widget[2][red]"] {
+  margin-left: 8px;
+}
+
+input[name="widget-o_skyltar_widget[2][title]"] {
+  width: 100%;
+}
 
 /* END wp-skyltar-css */

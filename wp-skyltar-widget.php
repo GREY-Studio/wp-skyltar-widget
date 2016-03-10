@@ -22,13 +22,16 @@ License: MIT
 
    #JQuery
    //JQuery library include
-   wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js');
+   wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js');
    wp_enqueue_script('jquery');
 
    //Widget jQuery script
-   wp_register_script( 'script', plugins_url('wp-skyltar-jquery.js',__FILE__ ));
+   wp_register_script('script', plugins_url('wp-skyltar-jquery.js',__FILE__ ), array('jquery'));
    wp_enqueue_script('script');
 
+   //Add variables to array -> Enable usage in jQuery file
+   $translation_array = array('templateUrl' => plugins_url('wp-skyltar-widget.php'));
+   wp_localize_script('script', 'object', $translation_array);
  }
 
 /**
@@ -55,15 +58,38 @@ class o_skyltar_widget extends WP_Widget {
 
     #Variables
     $title = '';
+    $red;
+    $green;
+    $blue;
 
     #Check instance of title -> Set title to backend title if it exists
-    if(isset($instance['title'])){
-      $title = $instance['title'];
-    }
+    if(isset($instance['title'])){ $title = $instance['title']; }
+
+    #Check instances of colors -> Set percentages if they exist
+    if (isset($instance['red'])) { $red = $instance['red'];}
+    if (isset($instance['green'])) { $green = $instance['green'];}
+    if (isset($instance['blue'])) { $blue = $instance['blue'];}
 
     #Backend input fields
-    echo '<p><label for="' .$this->get_field_id('title'). '">Titel:</label><br>';
+
+    //Title
+    echo '<p><b><label for="' .$this->get_field_id('title'). '">Titel:</label></b><br>';
     echo '<input type="text" value="' .$title. '" name="' .$this->get_field_name('title'). '" id="' .$this->get_field_id('title'). '"></p>';
+
+    //Color percentages
+    echo '<p><b><label>Färg förändringsfaktor (procent):</label></b><br>';
+
+    //Red
+    echo '<label for="' .$this->get_field_id('red'). '">Röd: </label>';
+    echo '<input type="text" value="' .$red. '" name="' .$this->get_field_name('red'). '" id="' .$this->get_field_id('red'). '"><br>';
+
+    //Green
+    echo '<label for="' .$this->get_field_id('green'). '">Grön: </label>';
+    echo '<input type="text" value="' .$green. '" name="' .$this->get_field_name('green'). '" id="' .$this->get_field_id('green'). '"><br>';
+
+    //Blue
+    echo '<label for="' .$this->get_field_id('blue'). '">Blå: </label>';
+    echo '<input type="text" value="' .$blue. '" name="' .$this->get_field_name('blue'). '" id="' .$this->get_field_id('blue'). '"></p><br>';
 
   }
 
@@ -79,6 +105,9 @@ class o_skyltar_widget extends WP_Widget {
 
     #Set instances to the updated ones
     $instance['title'] = $new_instance['title'];
+    $instance['red'] = $new_instance['red'];
+    $instance['green'] = $new_instance['green'];
+    $instance['blue'] = $new_instance['blue'];
 
     #Return updated instances
     return $instance;
@@ -103,13 +132,13 @@ class o_skyltar_widget extends WP_Widget {
 
         #Input Letter Height
         echo '<br>Bokstavshöjd i millimeter';
-        echo '<br><input type="text" value="0 millimeter" class="sk-letter-height">';
+        echo '<br><input type="text" placeholder="0 millimeter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-letter-height">';
 
         #Input Colors & Distance
         echo "<br><br>Läsbar till avståndet";
-        echo '<br><input type="text" name="sk" value="0 meter" class="sk-red">';
-        echo '<br><input type="text" name="sk" value="0 meter" class="sk-green">';
-        echo '<br><input type="text" name="sk" value="0 meter" class="sk-blue">';
+        echo '<br><input type="text" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-red">';
+        echo '<br><input type="text" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-green">';
+        echo '<br><input type="text" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-blue">';
 
       echo '</div>'; //End widget wrapper
 
