@@ -36,7 +36,7 @@
           $input_green = $sk_green.val(),
           $input_blue = $sk_blue.val();
 
-      if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height)){
+      if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height) && processed_input()){
         equation('bok_h');
       }
 
@@ -52,7 +52,6 @@
             $res_blue;
 
         if($type == 'bok_h'){
-
           $res_red = $letter_height*$sk_red.data("percentage");
           $res_green = $letter_height*$sk_green.data("percentage");
           $res_blue = $letter_height*$sk_blue.data("percentage");
@@ -71,6 +70,9 @@
   // Input Management
   //---------------------------------------------
 
+  function processed_input() {
+    return true;
+  }
 
   //---------------------------------------------
   // Action Events
