@@ -31,7 +31,7 @@ input[type="text"].sk-blue {
 }
 
 input[name="widget-o_skyltar_widget[2][blue]"] {
-  margin-left: 13px;  
+  margin-left: 13px;
 }
 
 input[name="widget-o_skyltar_widget[2][red]"] {
@@ -40,6 +40,23 @@ input[name="widget-o_skyltar_widget[2][red]"] {
 
 input[name="widget-o_skyltar_widget[2][title]"] {
   width: 100%;
+}
+
+message {
+  margin-left: 20px;
+  font-size: .83em;
+  font-weight: 600;
+  opacity: 0;
+}
+
+message.activated {
+  color: green;
+  opacity: 1;
+}
+
+message.deactivated {
+  color: red;
+  opacity: 1;
 }
 
 /* END wp-skyltar-css */

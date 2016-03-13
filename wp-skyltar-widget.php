@@ -77,19 +77,19 @@ class o_skyltar_widget extends WP_Widget {
     echo '<input type="text" value="' .$title. '" name="' .$this->get_field_name('title'). '" id="' .$this->get_field_id('title'). '"></p>';
 
     //Color percentages
-    echo '<p><b><label>Färg förändringsfaktor (procent):</label></b><br>';
+    echo '<p><b><label>Färgernas förändringsfaktor (procent):</label></b><br>';
 
     //Red
     echo '<label for="' .$this->get_field_id('red'). '">Röd: </label>';
-    echo '<input type="text" value="' .$red. '" name="' .$this->get_field_name('red'). '" id="' .$this->get_field_id('red'). '"><br>';
+    echo '<input type="text" value="' .$red. '" name="' .$this->get_field_name('red'). '" class="red" id="' .$this->get_field_id('red'). '"><message class="ms_red"></message><br>';
 
     //Green
     echo '<label for="' .$this->get_field_id('green'). '">Grön: </label>';
-    echo '<input type="text" value="' .$green. '" name="' .$this->get_field_name('green'). '" id="' .$this->get_field_id('green'). '"><br>';
+    echo '<input type="text" value="' .$green. '" name="' .$this->get_field_name('green'). '" class="green" id="' .$this->get_field_id('green'). '"><message class="ms_green"></message><br>';
 
     //Blue
     echo '<label for="' .$this->get_field_id('blue'). '">Blå: </label>';
-    echo '<input type="text" value="' .$blue. '" name="' .$this->get_field_name('blue'). '" id="' .$this->get_field_id('blue'). '"></p><br>';
+    echo '<input type="text" value="' .$blue. '" name="' .$this->get_field_name('blue'). '" class="blue" id="' .$this->get_field_id('blue'). '"><message class="ms_blue"></message></p><br>';
 
   }
 

@@ -12,6 +12,8 @@
 
   //Private variables
   var $input,
+      $bk_input,
+      $bk_button,
       $sk_lh,
       $sk_red,
       $sk_green,
@@ -41,7 +43,7 @@
       }
 
       /**
-       * Function Equation
+       * Function Equation (inner function)
        *
        * @since 1.0
        * @param $type Type
@@ -64,14 +66,50 @@
 
       }
 
+      //---------------------------------------------
+      // Input Management
+      //---------------------------------------------
+
+
+      /**
+       * Function Processed Input (inner function)
+       * Check the inputs for errors & get the integers, despite the strings
+       *
+       * @since 1.0
+       */
+      function processed_input() {
+        return true;
+      }
+
     }
 
   //---------------------------------------------
-  // Input Management
+  // Activate & Deactivate
   //---------------------------------------------
 
-  function processed_input() {
-    return true;
+  /**
+  * Function check_active
+  * If inputs behold a number -> add 'aktiverad' else -> add 'deaktiverad'
+  *
+  * @since 1.0
+  * @param $input input
+  */
+  function check_active($input) {
+    var $processed_string,
+        $value = $input.val(),
+        $processed_class = $input.attr("class"),
+        $message_class = $('.widget-content .ms_' + $processed_class);
+
+    $message_class.removeClass('activated').removeClass('deactivated');
+
+    if($value > 0){
+      $message_class.addClass('activated');
+      $message_class.html('Aktiverad');
+    } else {
+      $message_class.addClass('deactivated');
+      $message_class.html('Deaktiverad');
+    }
+
   }
 
   //---------------------------------------------
@@ -90,9 +128,42 @@
     calculate($this);
   }
 
+  /**
+  * Function Activate
+  * Define what change was made and sends it to activate / deactivate
+  *
+  * @since 1.0
+  * @param e Event
+  */
+  function activate(e) {
+    var $this = $(this);
+    check_active($this);
+  }
+
+  /**
+  * Function Reactivate
+  * Define what changes was made on button click and reactivate / deactivate
+  *
+  * @since 1.0
+  * @param e Event
+  */
+  function reactivate(e) {
+    setTimeout(function() {
+      var $sk_list = [$('#widget-o_skyltar_widget-2-red'), $('#widget-o_skyltar_widget-2-green'), $('#widget-o_skyltar_widget-2-blue')];
+
+      for (var i = 0; i < $sk_list.length; i++) {
+        check_active($sk_list[i]);
+      }
+
+      bindings();
+    }, 300);
+  }
+
   //Function bindings
   function bindings() {
    $input.on('keyup', on_change);
+   $bk_input.on('change', activate);
+   $bk_button.on('click', reactivate);
   }
 
   $(function() {
@@ -101,10 +172,19 @@
 
     //Define variables
     $input = $('.wp-skyltar-widget input');
+    $bk_input = $('.widget-content input');
+    $bk_button = $('#widget-o_skyltar_widget-2-savewidget');
     $sk_lh = $('.sk-letter-height');
     $sk_red = $('.sk-red');
     $sk_green = $('.sk-green');
     $sk_blue = $('.sk-blue');
+
+    //Initiate on load
+    var $sk_list = [$('#widget-o_skyltar_widget-2-red'), $('#widget-o_skyltar_widget-2-green'), $('#widget-o_skyltar_widget-2-blue')];
+
+    for (var i = 0; i < $sk_list.length; i++) {
+      check_active($sk_list[i]);
+    }
 
     //Call function with bindings
     bindings();
