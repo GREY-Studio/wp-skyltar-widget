@@ -71,8 +71,8 @@ class o_skyltar_widget extends WP_Widget {
     if (isset($instance['red'])) { $red = $instance['red'];}
     if (isset($instance['green'])) { $green = $instance['green'];}
     if (isset($instance['blue'])) { $blue = $instance['blue'];}
-    if (isset($instance['yellow'])) { $blue = $instance['yellow'];}
-    if (isset($instance['white'])) { $blue = $instance['white'];}
+    if (isset($instance['yellow'])) { $yellow = $instance['yellow'];}
+    if (isset($instance['white'])) { $white = $instance['white'];}
 
     #Backend input fields
 
@@ -145,16 +145,18 @@ class o_skyltar_widget extends WP_Widget {
         echo $args['before_title']. "<h3>" .$instance['title']. "</h3>" .$args['after_title'];
 
         #Input Letter Height
-        echo '<br>Bokstavshöjd i millimeter';
-        echo '<br><input type="text" placeholder="0" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-letter-height">';
+        #echo '<br>Bokstavshöjd i millimeter';
+        echo '<br><input type="text" placeholder="Bokstavshöjd i millimeter" maxlength="10" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-letter-height">
+        <input type="text" placeholder="Avstånd i meter" maxlength="10" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-view-distance">';
+
 
         #Input Colors & Distance
         echo "<br><br>Läsbarhet till avståndet";
-        echo '<br><input type="text" data-percentage="' .$instance['red']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-red">';
-        echo '<br><input type="text" data-percentage="' .$instance['green']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-green">';
-        echo '<br><input type="text" data-percentage="' .$instance['blue']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-blue">';
-        echo '<br><input type="text" data-percentage="' .$instance['yellow']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-yellow">';
-        echo '<br><input type="text" data-percentage="' .$instance['white']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-white">';
+        echo '<br><div type="text" data-percentage="' .$instance['red']. '" name="sk" class="sk-red"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['green']. '" name="sk" class="sk-green"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['blue']. '" name="sk" class="sk-blue"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['yellow']. '" name="sk" class="sk-yellow"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['white']. '" name="sk" class="sk-white"><h5>0.00 meter</h5></div>';
 
       echo '</div>'; //End widget wrapper
 

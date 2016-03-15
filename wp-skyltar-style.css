@@ -11,7 +11,6 @@
 }
 
 .wp-skyltar-widget > input[type="text"] {
-  margin-top: 8px;
   -moz-box-sizing: border-box;
   -moz-border-radius: 2px;
   -webkit-box-sizing: border-box;
@@ -21,7 +20,7 @@
   outline: none;
   padding: 6px 8px;
   vertical-align: middle;
-  width: 100%;
+  width: 45%;
   border: 0 !important;
   background: #F6F5F1;
   box-shadow: 0px !important;
@@ -32,20 +31,52 @@
   background: #F6F5F1;
 }
 
-.wp-skyltar-widget > input[name="sk"] {
-  width: 500px;
+.wp-skyltar-widget > .sk-view-distance {
+  margin-left: 20px;
 }
 
-input[type="text"].sk-red {
-  background: #f2dede;
+.wp-skyltar-widget h3 {
+  margin-bottom: 0px !important;
 }
 
-input[type="text"].sk-green {
-  background: #dff0d8;
+div[name="sk"] {
+  width: 80%;
+  height: 7px;
+  margin-top: 8px;
 }
 
-input[type="text"].sk-blue {
-  background: #d9edf7;
+div[name="sk"] > h5 {
+  text-align: right;
+  margin-right: -85px;
+  line-height: 8px;
+}
+
+div.sk-red {
+  background: #e42e34;     /*#f2dede*/
+}
+
+div.sk-green {
+  background: #6a693d;
+  width: 61.6%;
+}
+
+div.sk-blue {
+  background: #3a5f67;
+  width: 53.6%;
+}
+
+div.sk-yellow {
+  background: rgb(246, 197, 116);
+  width: 61.6%;
+}
+
+div.sk-white {
+  background: #F6F5F1;
+  width: 61.6%;
+}
+
+div[name="sk"].same {
+  width: 80%;
 }
 
 input[name="widget-o_skyltar_widget[2][blue]"] {

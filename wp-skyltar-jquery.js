@@ -17,6 +17,7 @@
       $bk_button,
       $sk_list,
       $sk_lh,
+      $sk_vd,
       $sk_red,
       $sk_green,
       $sk_blue,
@@ -37,14 +38,16 @@
     */
     function calculate($input) {
       var $letter_height = $sk_lh.val(),
-          $input_red = $sk_red.val(),
-          $input_green = $sk_green.val(),
-          $input_blue = $sk_blue.val(),
-          $input_yellow = $sk_yellow.val(),
-          $input_white = $sk_white.val();
+          $view_distance = $sk_vd.val();
 
-      if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height) && processed_input()){
+      if($letter_height == "") {
+        $letter_height = 0;
+      }
+
+      if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height) && processed_input()) {
         equation('bok_h');
+      } else if($input.hasClass('sk-view-distance') && $.isNumeric($letter_height) && processed_input()) {
+        console.log('View dis');
       }
 
       /**
@@ -69,11 +72,11 @@
         }
 
         //Update the textfields
-        $sk_red.val($res_red.toFixed(2) + ' meter');
-        $sk_green.val($res_green.toFixed(2) + ' meter');
-        $sk_blue.val($res_blue.toFixed(2) + ' meter');
-        $sk_yellow.val($res_yellow.toFixed(2) + ' meter');
-        $sk_white.val($res_white.toFixed(2) + ' meter');
+        $sk_red.children().html($res_red.toFixed(2) + ' meter');
+        $sk_green.children().html($res_green.toFixed(2) + ' meter');
+        $sk_blue.children().html($res_blue.toFixed(2) + ' meter');
+        $sk_yellow.children().html($res_yellow.toFixed(2) + ' meter');
+        $sk_white.children().html($res_white.toFixed(2) + ' meter');
 
       }
 
@@ -184,6 +187,7 @@
     $bk_input = $('.widget-content input');
     $bk_button = $('#widget-o_skyltar_widget-2-savewidget');
     $sk_lh = $('.sk-letter-height');
+    $sk_vd = $('.sk-view-distance');
     $sk_red = $('.sk-red');
     $sk_green = $('.sk-green');
     $sk_blue = $('.sk-blue');
