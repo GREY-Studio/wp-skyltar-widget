@@ -12,12 +12,16 @@
 
   //Private variables
   var $input,
+      $list,
       $bk_input,
       $bk_button,
+      $sk_list,
       $sk_lh,
       $sk_red,
       $sk_green,
       $sk_blue,
+      $sk_yellow,
+      $sk_white,
       $data,
       $path = object.templateUrl;
 
@@ -32,11 +36,12 @@
     * @param $input Input
     */
     function calculate($input) {
-      var $list = [],
-          $letter_height = $sk_lh.val(),
+      var $letter_height = $sk_lh.val(),
           $input_red = $sk_red.val(),
           $input_green = $sk_green.val(),
-          $input_blue = $sk_blue.val();
+          $input_blue = $sk_blue.val(),
+          $input_yellow = $sk_yellow.val(),
+          $input_white = $sk_white.val();
 
       if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height) && processed_input()){
         equation('bok_h');
@@ -51,18 +56,24 @@
       function equation($type) {
         var $res_red,
             $res_green,
-            $res_blue;
+            $res_blue,
+            $res_yellow,
+            $res_white;
 
         if($type == 'bok_h'){
           $res_red = $letter_height*$sk_red.data("percentage");
           $res_green = $letter_height*$sk_green.data("percentage");
           $res_blue = $letter_height*$sk_blue.data("percentage");
+          $res_yellow = $letter_height*$sk_yellow.data("percentage");
+          $res_white = $letter_height*$sk_white.data("percentage");
         }
 
         //Update the textfields
         $sk_red.val($res_red.toFixed(2) + ' meter');
         $sk_green.val($res_green.toFixed(2) + ' meter');
         $sk_blue.val($res_blue.toFixed(2) + ' meter');
+        $sk_yellow.val($res_yellow.toFixed(2) + ' meter');
+        $sk_white.val($res_white.toFixed(2) + ' meter');
 
       }
 
@@ -149,8 +160,6 @@
   */
   function reactivate(e) {
     setTimeout(function() {
-      var $sk_list = [$('#widget-o_skyltar_widget-2-red'), $('#widget-o_skyltar_widget-2-green'), $('#widget-o_skyltar_widget-2-blue')];
-
       for (var i = 0; i < $sk_list.length; i++) {
         check_active($sk_list[i]);
       }
@@ -178,9 +187,12 @@
     $sk_red = $('.sk-red');
     $sk_green = $('.sk-green');
     $sk_blue = $('.sk-blue');
+    $sk_yellow = $('.sk-yellow');
+    $sk_white = $('.sk-white');
+    $list = ['red', 'green', 'blue', 'yellow', 'white'];
 
     //Initiate on load
-    var $sk_list = [$('#widget-o_skyltar_widget-2-red'), $('#widget-o_skyltar_widget-2-green'), $('#widget-o_skyltar_widget-2-blue')];
+    $sk_list = [$('#widget-o_skyltar_widget-2-red'), $('#widget-o_skyltar_widget-2-green'), $('#widget-o_skyltar_widget-2-blue'), $('#widget-o_skyltar_widget-2-yellow'), $('#widget-o_skyltar_widget-2-white')];
 
     for (var i = 0; i < $sk_list.length; i++) {
       check_active($sk_list[i]);

@@ -61,6 +61,8 @@ class o_skyltar_widget extends WP_Widget {
     $red;
     $green;
     $blue;
+    $yellow;
+    $white;
 
     #Check instance of title -> Set title to backend title if it exists
     if(isset($instance['title'])){ $title = $instance['title']; }
@@ -69,6 +71,8 @@ class o_skyltar_widget extends WP_Widget {
     if (isset($instance['red'])) { $red = $instance['red'];}
     if (isset($instance['green'])) { $green = $instance['green'];}
     if (isset($instance['blue'])) { $blue = $instance['blue'];}
+    if (isset($instance['yellow'])) { $blue = $instance['yellow'];}
+    if (isset($instance['white'])) { $blue = $instance['white'];}
 
     #Backend input fields
 
@@ -89,7 +93,15 @@ class o_skyltar_widget extends WP_Widget {
 
     //Blue
     echo '<label for="' .$this->get_field_id('blue'). '">Blå: </label>';
-    echo '<input type="text" value="' .$blue. '" name="' .$this->get_field_name('blue'). '" class="blue" id="' .$this->get_field_id('blue'). '"><message class="ms_blue"></message></p><br>';
+    echo '<input type="text" value="' .$blue. '" name="' .$this->get_field_name('blue'). '" class="blue" id="' .$this->get_field_id('blue'). '"><message class="ms_blue"></message><br>';
+
+    //Yellow
+    echo '<label for="' .$this->get_field_id('yellow'). '">Gul: </label>';
+    echo '<input type="text" value="' .$yellow. '" name="' .$this->get_field_name('yellow'). '" class="yellow" id="' .$this->get_field_id('yellow'). '"><message class="ms_yellow"></message><br>';
+
+    //White
+    echo '<label for="' .$this->get_field_id('white'). '">Vit: </label>';
+    echo '<input type="text" value="' .$white. '" name="' .$this->get_field_name('white'). '" class="white" id="' .$this->get_field_id('white'). '"><message class="ms_white"></message></p><br>';
 
   }
 
@@ -108,6 +120,8 @@ class o_skyltar_widget extends WP_Widget {
     $instance['red'] = $new_instance['red'];
     $instance['green'] = $new_instance['green'];
     $instance['blue'] = $new_instance['blue'];
+    $instance['yellow'] = $new_instance['yellow'];
+    $instance['white'] = $new_instance['white'];
 
     #Return updated instances
     return $instance;
@@ -128,7 +142,7 @@ class o_skyltar_widget extends WP_Widget {
       echo '<div class="widget wp-skyltar-widget">';
 
         #Title
-        echo $args['before_title'] .$instance['title']. $args['after_title'];
+        echo $args['before_title']. "<h3>" .$instance['title']. "</h3>" .$args['after_title'];
 
         #Input Letter Height
         echo '<br>Bokstavshöjd i millimeter';
@@ -139,6 +153,8 @@ class o_skyltar_widget extends WP_Widget {
         echo '<br><input type="text" data-percentage="' .$instance['red']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-red">';
         echo '<br><input type="text" data-percentage="' .$instance['green']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-green">';
         echo '<br><input type="text" data-percentage="' .$instance['blue']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-blue">';
+        echo '<br><input type="text" data-percentage="' .$instance['yellow']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-yellow">';
+        echo '<br><input type="text" data-percentage="' .$instance['white']. '" placeholder="0 meter" maxlength="40" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" name="sk" class="sk-white">';
 
       echo '</div>'; //End widget wrapper
 

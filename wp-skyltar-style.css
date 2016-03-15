@@ -12,6 +12,24 @@
 
 .wp-skyltar-widget > input[type="text"] {
   margin-top: 8px;
+  -moz-box-sizing: border-box;
+  -moz-border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -webkit-border-radius: 2px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  outline: none;
+  padding: 6px 8px;
+  vertical-align: middle;
+  width: 100%;
+  border: 0 !important;
+  background: #F6F5F1;
+  box-shadow: 0px !important;
+  color: #AFADAD;
+}
+
+.wp-skyltar-widget > input[type="text"]:focus {
+  background: #F6F5F1;
 }
 
 .wp-skyltar-widget > input[name="sk"] {
@@ -36,6 +54,14 @@ input[name="widget-o_skyltar_widget[2][blue]"] {
 
 input[name="widget-o_skyltar_widget[2][red]"] {
   margin-left: 8px;
+}
+
+input[name="widget-o_skyltar_widget[2][yellow]"] {
+  margin-left: 11px;
+}
+
+input[name="widget-o_skyltar_widget[2][white]"] {
+  margin-left: 16px;
 }
 
 input[name="widget-o_skyltar_widget[2][title]"] {
