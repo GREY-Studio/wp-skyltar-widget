@@ -84,6 +84,10 @@ div[name="sk"].same {
   width: 80%;
 }
 
+div[name="sk"].deactivated {
+  display: none;
+}
+
 input[name="widget-o_skyltar_widget[2][blue]"] {
   margin-left: 13px;
 }

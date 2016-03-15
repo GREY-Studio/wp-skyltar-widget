@@ -41,7 +41,7 @@
       var $letter_height = $sk_lh.val(),
           $view_distance = $sk_vd.val();
 
-      if($letter_height == "" || $letter_height == 0) {
+      if($letter_height == "") {
         $letter_height = 0;
       }
 
@@ -60,7 +60,6 @@
        */
       function set_color() {
         $sk_div.removeClass('same');
-        console.log($sk_div + " " + $letter_height);
         if($letter_height == 0) {
           $sk_div.addClass('same');
         }
@@ -88,12 +87,27 @@
         }
 
         //Update the textfields
-        $sk_red.children().html($res_red.toFixed(2) + ' meter');
-        $sk_green.children().html($res_green.toFixed(2) + ' meter');
-        $sk_blue.children().html($res_blue.toFixed(2) + ' meter');
-        $sk_yellow.children().html($res_yellow.toFixed(2) + ' meter');
-        $sk_white.children().html($res_white.toFixed(2) + ' meter');
+        set_variables($sk_red, $res_red);
+        set_variables($sk_green, $res_green);
+        set_variables($sk_blue, $res_blue);
+        set_variables($sk_yellow, $res_yellow);
+        set_variables($sk_white, $res_white);
 
+        /**
+         * Function SetVariables (inner function)
+         *
+         * @since 1.0
+         * @param $bar Bar
+         * @param $foo Foo
+         */
+        function set_variables($bar, $foo) {
+          $bar.removeClass('deactivated');
+          if($bar.data("percentage") != "") {
+            $bar.children().html($foo.toFixed(2) + ' meter');
+          } else {
+            $bar.addClass('deactivated');
+          }
+        }
       }
 
       //---------------------------------------------
@@ -218,6 +232,8 @@
     for (var i = 0; i < $sk_list.length; i++) {
       check_active($sk_list[i]);
     }
+
+    calculate($input);
 
     //Call function with bindings
     bindings();
