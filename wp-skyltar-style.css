@@ -43,6 +43,11 @@ div[name="sk"] {
   width: 80%;
   height: 7px;
   margin-top: 8px;
+  -webkit-transition: all 500ms cubic-bezier(.165,.84,.44,1);
+  -moz-transition: all 500ms cubic-bezier(.165,.84,.44,1);
+  -ms-transition: all 500ms cubic-bezier(.165,.84,.44,1);
+  -o-transition: all 500ms cubic-bezier(.165,.84,.44,1);
+  transition: all 500ms cubic-bezier(.165,.84,.44,1);
 }
 
 div[name="sk"] > h5 {

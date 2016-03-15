@@ -152,11 +152,11 @@ class o_skyltar_widget extends WP_Widget {
 
         #Input Colors & Distance
         echo "<br><br>Läsbarhet till avståndet";
-        echo '<br><div type="text" data-percentage="' .$instance['red']. '" name="sk" class="sk-red"><h5>0.00 meter</h5></div>';
-        echo '<br><div type="text" data-percentage="' .$instance['green']. '" name="sk" class="sk-green"><h5>0.00 meter</h5></div>';
-        echo '<br><div type="text" data-percentage="' .$instance['blue']. '" name="sk" class="sk-blue"><h5>0.00 meter</h5></div>';
-        echo '<br><div type="text" data-percentage="' .$instance['yellow']. '" name="sk" class="sk-yellow"><h5>0.00 meter</h5></div>';
-        echo '<br><div type="text" data-percentage="' .$instance['white']. '" name="sk" class="sk-white"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['red']. '" name="sk" class="sk-red same"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['green']. '" name="sk" class="sk-green same"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['blue']. '" name="sk" class="sk-blue same"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['yellow']. '" name="sk" class="sk-yellow same"><h5>0.00 meter</h5></div>';
+        echo '<br><div type="text" data-percentage="' .$instance['white']. '" name="sk" class="sk-white same"><h5>0.00 meter</h5></div>';
 
       echo '</div>'; //End widget wrapper
 

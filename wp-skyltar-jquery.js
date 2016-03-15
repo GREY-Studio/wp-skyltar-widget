@@ -16,6 +16,7 @@
       $bk_input,
       $bk_button,
       $sk_list,
+      $sk_div,
       $sk_lh,
       $sk_vd,
       $sk_red,
@@ -40,14 +41,29 @@
       var $letter_height = $sk_lh.val(),
           $view_distance = $sk_vd.val();
 
-      if($letter_height == "") {
+      if($letter_height == "" || $letter_height == 0) {
         $letter_height = 0;
       }
+
+      set_color();
 
       if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height) && processed_input()) {
         equation('bok_h');
       } else if($input.hasClass('sk-view-distance') && $.isNumeric($letter_height) && processed_input()) {
         console.log('View dis');
+      }
+
+      /**
+       * Function SetColor (inner function)
+       *
+       * @since 1.0
+       */
+      function set_color() {
+        $sk_div.removeClass('same');
+        console.log($sk_div + " " + $letter_height);
+        if($letter_height == 0) {
+          $sk_div.addClass('same');
+        }
       }
 
       /**
@@ -187,6 +203,7 @@
     $bk_input = $('.widget-content input');
     $bk_button = $('#widget-o_skyltar_widget-2-savewidget');
     $sk_lh = $('.sk-letter-height');
+    $sk_div = $('div[name="sk"]');
     $sk_vd = $('.sk-view-distance');
     $sk_red = $('.sk-red');
     $sk_green = $('.sk-green');
