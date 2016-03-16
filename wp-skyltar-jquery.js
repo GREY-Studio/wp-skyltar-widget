@@ -19,6 +19,7 @@
       $sk_div,
       $sk_lh,
       $sk_vd,
+      $sk_radio,
       $data,
       $selected_color,
       $path = object.templateUrl;
@@ -140,7 +141,6 @@
           set_width();
         }, 50);
 
-
         //Reset color
         set_color();
 
@@ -155,9 +155,9 @@
 
           for(var i = 0; i < $sk_array.length; i++) {
             if($list[i].hasClass('same')) {
-              $list[i].css('width', '80%');
+              $list[i].css('width', '76%');
             } else {
-              $list[i].css('width', ($sk_array[i] / $max) * 80 + '%');
+              $list[i].css('width', ($sk_array[i] / $max) * 76 + '%');
             }
           }
 
@@ -253,12 +253,9 @@
     var $this = $(this),
         $bool = false;
 
-    $selected_color = $this;
+    $selected_color = $this.parent();
 
-    if($selected_color.hasClass('sk-select')) {$bool = true};
-
-    $sk_div.removeClass('sk-select');
-    if(!$bool) {$selected_color.addClass('sk-select');}
+    $selected_color.toggleClass('sk-select');
   }
 
   /**
@@ -295,7 +292,7 @@
    $input.on('keyup', on_change);
    $bk_input.on('change', activate);
    $bk_button.on('click', reactivate);
-   $sk_div.on('click', on_select);
+   $sk_radio.on('click', on_select);
   }
 
   $(function() {
@@ -309,6 +306,7 @@
     $sk_lh = $('.sk-letter-height');
     $sk_div = $('div[name="sk"]');
     $sk_vd = $('.sk-view-distance');
+    $sk_radio = $('input[name="sk-color"]');
     $list = [
       $('.sk-red'),
       $('.sk-green'),
@@ -325,6 +323,11 @@
       $('#widget-o_skyltar_widget-2-yellow'),
       $('#widget-o_skyltar_widget-2-white')
     ];
+
+    //Initiate radio buttons
+    var $init_radio = $('input[name="sk-color"]:checked');
+    $selected_color = $init_radio.parent();
+    $selected_color.addClass('sk-select');
 
     //Loop and check active
     for (var i = 0; i < $sk_list.length; i++) {
