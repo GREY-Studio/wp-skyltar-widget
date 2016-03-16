@@ -29,18 +29,19 @@ wordpress/wp-content/plugins
 (References to back-end variables and options)
 
 **Title [String/Text]**
+
 Write a header title to catch some attention.
 
 **Subtitle [String/Text]**
+
 Write a subtitle to instruct the users how to enter information.
 
-**Colors [Itegers/Numbers]**
+**Colors [Integers/Numbers]**
+
 Enter percentages to enable the color on the front-end. These variables will determine the results made in the calculations.
 
-Modes:
+Color modes:
 
-```html
-   <p style='color:green'>Aktiverad</p> - The variable is activated and the color will be shown on the front-end.
-   <br>
-   <p style='color:red'>Deaktiverad</p> - The variable is deactivated and the color will be hidden on the front-end.
-```
+  ***Aktiverad*** - The variable is activated and the color will be shown on the front-end.
+
+  ***Deaktiverad*** - The variable is deactivated and the color will be hidden on the front-end.
