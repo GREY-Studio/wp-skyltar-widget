@@ -156,7 +156,7 @@ class o_skyltar_widget extends WP_Widget {
         #Input Letter Height
         #echo '<br>Bokstavshöjd i millimeter';
         echo '<br><input type="text" placeholder="Bokstavshöjd i millimeter" maxlength="5" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-letter-height">
-        <input type="text" placeholder="Avstånd i meter" maxlength="4" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-view-distance">';
+              <input type="text" placeholder="Avstånd i meter (välj en färg)" maxlength="4" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off" class="sk-view-distance">';
 
 
         #Input Colors & Distance
