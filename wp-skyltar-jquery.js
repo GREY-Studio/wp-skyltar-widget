@@ -272,6 +272,7 @@
       $('#widget-o_skyltar_widget-2-white')
     ];
 
+    //Loop and check active
     for (var i = 0; i < $sk_list.length; i++) {
       check_active($sk_list[i]);
     }
