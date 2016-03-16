@@ -19,11 +19,6 @@
       $sk_div,
       $sk_lh,
       $sk_vd,
-      $sk_red,
-      $sk_green,
-      $sk_blue,
-      $sk_yellow,
-      $sk_white,
       $data,
       $path = object.templateUrl;
 
@@ -50,7 +45,7 @@
       if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height) && processed_input()) {
         equation('bok_h');
       } else if($input.hasClass('sk-view-distance') && $.isNumeric($letter_height) && processed_input()) {
-        console.log('View dis');
+        equation('vie_d');
       }
 
       /**
@@ -75,11 +70,11 @@
         var $max,
             $res_array = [],
             $sk_array = [
-              $sk_red.data("percentage"),
-              $sk_green.data("percentage"),
-              $sk_blue.data("percentage"),
-              $sk_yellow.data("percentage"),
-              $sk_white.data("percentage")
+              $list[0].data("percentage"),
+              $list[1].data("percentage"),
+              $list[2].data("percentage"),
+              $list[3].data("percentage"),
+              $list[4].data("percentage")
             ];
 
         //The equation of letter height
@@ -87,6 +82,8 @@
           for(var k = 0; k < $sk_array.length; k++) {
             $res_array.push($letter_height*$sk_array[k]);
           }
+        } else if($type == 'vie_d') {
+          console.log('yes');
         }
 
         //Create dynamic text with an addition of classes
@@ -105,7 +102,9 @@
 
         //Update the textfields
         for(var j = 0; j < $list.length; j++) {
-          set_variables($list[j], $res_array[j]);
+          if(!$list[j].hasClass('deactivated')) {
+            set_variables($list[j], $res_array[j]);
+          }
         }
 
         //Set width of color elements
@@ -256,17 +255,12 @@
     $sk_lh = $('.sk-letter-height');
     $sk_div = $('div[name="sk"]');
     $sk_vd = $('.sk-view-distance');
-    $sk_red = $('.sk-red');
-    $sk_green = $('.sk-green');
-    $sk_blue = $('.sk-blue');
-    $sk_yellow = $('.sk-yellow');
-    $sk_white = $('.sk-white');
     $list = [
-      $sk_red,
-      $sk_green,
-      $sk_blue,
-      $sk_yellow,
-      $sk_white
+      $('.sk-red'),
+      $('.sk-green'),
+      $('.sk-blue'),
+      $('.sk-yellow'),
+      $('.sk-white')
     ];
 
     //Initiate on load
