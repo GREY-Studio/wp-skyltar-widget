@@ -56,6 +56,18 @@ div[name="sk"] > h5 {
   line-height: 8px;
 }
 
+div[name="sk"].sk-3 > h5 {
+  margin-right: -95px;
+}
+
+div[name="sk"].sk-4 > h5 {
+  margin-right: -102px;
+}
+
+div[name="sk"].sk-5 > h5 {
+  margin-right: -110px;
+}
+
 div.sk-red {
   background: #e42e34;     /*#f2dede*/
 }
@@ -104,7 +116,7 @@ input[name="widget-o_skyltar_widget[2][white]"] {
   margin-left: 16px;
 }
 
-input[name="widget-o_skyltar_widget[2][title]"] {
+input[name="widget-o_skyltar_widget[2][title]"], input[name="widget-o_skyltar_widget[2][subtitle]"] {
   width: 100%;
 }
 

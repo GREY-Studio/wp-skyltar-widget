@@ -72,26 +72,63 @@
        * @param $type Type
        */
       function equation($type) {
-        var $res_red,
-            $res_green,
-            $res_blue,
-            $res_yellow,
-            $res_white;
+        var $max,
+            $res_array = [],
+            $sk_array = [
+              $sk_red.data("percentage"),
+              $sk_green.data("percentage"),
+              $sk_blue.data("percentage"),
+              $sk_yellow.data("percentage"),
+              $sk_white.data("percentage")
+            ];
 
+        //The equation of letter height
         if($type == 'bok_h'){
-          $res_red = $letter_height*$sk_red.data("percentage");
-          $res_green = $letter_height*$sk_green.data("percentage");
-          $res_blue = $letter_height*$sk_blue.data("percentage");
-          $res_yellow = $letter_height*$sk_yellow.data("percentage");
-          $res_white = $letter_height*$sk_white.data("percentage");
+          for(var k = 0; k < $sk_array.length; k++) {
+            $res_array.push($letter_height*$sk_array[k]);
+          }
         }
 
+        //Create dynamic text with an addition of classes
+        if($letter_height.toString().length == 3) {
+          $sk_div.removeClass('sk-4 sk-5');
+          $sk_div.addClass('sk-3');
+        } else if($letter_height.toString().length == 4) {
+          $sk_div.removeClass('sk-3 sk-5');
+          $sk_div.addClass('sk-4');
+        } else if($letter_height.toString().length == 5) {
+          $sk_div.removeClass('sk-3 sk-4');
+          $sk_div.addClass('sk-5');
+        } else {
+          $sk_div.removeClass('sk-3 sk-4 sk-5');
+        };
+
         //Update the textfields
-        set_variables($sk_red, $res_red);
-        set_variables($sk_green, $res_green);
-        set_variables($sk_blue, $res_blue);
-        set_variables($sk_yellow, $res_yellow);
-        set_variables($sk_white, $res_white);
+        for(var j = 0; j < $list.length; j++) {
+          set_variables($list[j], $res_array[j]);
+        }
+
+        //Set width of color elements
+        set_width();
+
+        /**
+         * Function SetWidth (inner function)
+         *
+         * @since 1.0
+         */
+        function set_width() {
+          //Get max value (the new 100%)
+          $max = Math.max.apply(null, $sk_array);
+
+          for(var i = 0; i < $sk_array.length; i++) {
+            if($list[i].hasClass('same')) {
+              $list[i].css('width', '80%');
+            } else {
+              $list[i].css('width', ($sk_array[i] / $max) * 80 + '%');
+            }
+          }
+
+        }
 
         /**
          * Function SetVariables (inner function)
@@ -224,10 +261,22 @@
     $sk_blue = $('.sk-blue');
     $sk_yellow = $('.sk-yellow');
     $sk_white = $('.sk-white');
-    $list = ['red', 'green', 'blue', 'yellow', 'white'];
+    $list = [
+      $sk_red,
+      $sk_green,
+      $sk_blue,
+      $sk_yellow,
+      $sk_white
+    ];
 
     //Initiate on load
-    $sk_list = [$('#widget-o_skyltar_widget-2-red'), $('#widget-o_skyltar_widget-2-green'), $('#widget-o_skyltar_widget-2-blue'), $('#widget-o_skyltar_widget-2-yellow'), $('#widget-o_skyltar_widget-2-white')];
+    $sk_list = [
+      $('#widget-o_skyltar_widget-2-red'),
+      $('#widget-o_skyltar_widget-2-green'),
+      $('#widget-o_skyltar_widget-2-blue'),
+      $('#widget-o_skyltar_widget-2-yellow'),
+      $('#widget-o_skyltar_widget-2-white')
+    ];
 
     for (var i = 0; i < $sk_list.length; i++) {
       check_active($sk_list[i]);
