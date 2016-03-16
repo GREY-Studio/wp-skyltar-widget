@@ -68,6 +68,10 @@ div[name="sk"].sk-5 > h5 {
   margin-right: -110px;
 }
 
+div[name="sk"].sk-select {
+  border: solid 1px #000;
+}
+
 div.sk-red {
   background: #e42e34;     /*#f2dede*/
 }

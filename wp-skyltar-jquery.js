@@ -20,6 +20,7 @@
       $sk_lh,
       $sk_vd,
       $data,
+      $selected_color,
       $path = object.templateUrl;
 
    //---------------------------------------------
@@ -40,11 +41,16 @@
         $letter_height = 0;
       }
 
+      if($view_distance == "") {
+        $view_distance = 0;
+      }
+
+      //Set color
       set_color();
 
       if($input.hasClass('sk-letter-height') && $.isNumeric($letter_height) && processed_input()) {
         equation('bok_h');
-      } else if($input.hasClass('sk-view-distance') && $.isNumeric($letter_height) && processed_input()) {
+      } else if($input.hasClass('sk-view-distance') && $.isNumeric($view_distance) && processed_input()) {
         equation('vie_d');
       }
 
@@ -60,6 +66,7 @@
         }
       }
 
+
       /**
        * Function Equation (inner function)
        *
@@ -68,22 +75,50 @@
        */
       function equation($type) {
         var $max,
+            $color_per,
+            $color_res,
+            $temp,
             $res_array = [],
-            $sk_array = [
-              $list[0].data("percentage"),
-              $list[1].data("percentage"),
-              $list[2].data("percentage"),
-              $list[3].data("percentage"),
-              $list[4].data("percentage")
-            ];
+            $sk_array = [];
 
-        //The equation of letter height
+        //Add data tags to sk_array
+        for(var l = 0; l < $list.length; l++) {
+          $sk_array.push($list[l].data("percentage"));
+        }
+
+        //Build up res_array
+        for(var k = 0; k < $sk_array.length; k++) {
+          $res_array.push($letter_height*$sk_array[k]);
+        }
+
+        //The equation of letter height & the equation of view distance
         if($type == 'bok_h'){
-          for(var k = 0; k < $sk_array.length; k++) {
-            $res_array.push($letter_height*$sk_array[k]);
+
+          //Update the color divs
+          for(var j = 0; j < $list.length; j++) {
+            if(!$list[j].hasClass('deactivated')) {
+              set_variables($list[j], $res_array[j]);
+            }
           }
-        } else if($type == 'vie_d') {
-          console.log('yes');
+
+        } else if($type == 'vie_d' && $selected_color != null) {
+          $color_per = $selected_color.data("percentage");
+          $color_res = $sk_vd.val() / $color_per;
+
+          if($view_distance == 0) {
+            $letter_height = 0;
+            $sk_lh.val(null)
+          } else {
+            $letter_height = Math.round($color_res);
+            $sk_lh.val($letter_height);
+          }
+
+          //Update the color divs
+          for(var u = 0; u < $list.length; u++) {
+            if(!$list[u].hasClass('deactivated')) {
+              set_variables($list[u], $color_res*$sk_array[u]);
+            }
+          }
         }
 
         //Create dynamic text with an addition of classes
@@ -100,15 +135,14 @@
           $sk_div.removeClass('sk-3 sk-4 sk-5');
         };
 
-        //Update the textfields
-        for(var j = 0; j < $list.length; j++) {
-          if(!$list[j].hasClass('deactivated')) {
-            set_variables($list[j], $res_array[j]);
-          }
-        }
-
         //Set width of color elements
-        set_width();
+        setTimeout(function() {
+          set_width();
+        }, 50);
+
+
+        //Reset color
+        set_color();
 
         /**
          * Function SetWidth (inner function)
@@ -209,6 +243,25 @@
   }
 
   /**
+  * Function on_select
+  * Set the variable selected_color to the clicked div
+  *
+  * @since 1.0
+  * @param e Event
+  */
+  function on_select(e) {
+    var $this = $(this),
+        $bool = false;
+
+    $selected_color = $this;
+
+    if($selected_color.hasClass('sk-select')) {$bool = true};
+
+    $sk_div.removeClass('sk-select');
+    if(!$bool) {$selected_color.addClass('sk-select');}
+  }
+
+  /**
   * Function Activate
   * Define what change was made and sends it to activate / deactivate
   *
@@ -242,6 +295,7 @@
    $input.on('keyup', on_change);
    $bk_input.on('change', activate);
    $bk_button.on('click', reactivate);
+   $sk_div.on('click', on_select);
   }
 
   $(function() {
