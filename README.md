@@ -22,7 +22,7 @@ wordpress/wp-content/plugins
 
 **4.** Click on the element to set further **options**, for example title, subtitle, color percentages etc.
 
-![Imgur](http://i.imgur.com/2i40IBy.png)
+![Imgur](http://i.imgur.com/2i40IBy.png) ![Imgur](http://i.imgur.com/ftR9FbT.png)
 
 ## Options
 
@@ -40,7 +40,7 @@ Write a subtitle to instruct the users how to enter information.
 
 Enter percentages to enable the color on the front-end. These variables will determine the results made in the calculations.
 
-Color modes:
+**Color modes:**
 
   ***Aktiverad*** - The variable is activated and the color will be shown on the front-end.
 
