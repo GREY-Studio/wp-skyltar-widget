@@ -3,7 +3,8 @@
 By [Emil Olsson (GREY-Studio)](https://github.com/GREY-Studio/).
 
 ## Description
-**Wordpress Skyltar Widget**
+**Wordpress Skyltar Widget** is a widget created for Focus Neon's Wordpress template. The purpose of it being to calculate how different specifications such as 'Letter Height', 'Color of the sign'
+and 'View Distance' will effect each other from a user's perspective.
 
 ## Installation
 
@@ -19,11 +20,27 @@ wordpress/wp-content/plugins
 
 **3.** Then, go to **appearance (utseende)** and drag the element named **WP Skyltar Widget** to the preferred placement and drop it.
 
-**4.** Click on the element to set further **options**, for example title, color percentages etc.
+**4.** Click on the element to set further **options**, for example title, subtitle, color percentages etc.
+
+![Imgur](http://i.imgur.com/2i40IBy.png)
 
 ## Options
 
-**Title**
+(References to back-end variables and options)
 
+**Title [String/Text]**
+Write a header title to catch some attention.
 
-**Colors**
+**Subtitle [String/Text]**
+Write a subtitle to instruct the users how to enter information.
+
+**Colors [Itegers/Numbers]**
+Enter percentages to enable the color on the front-end. These variables will determine the results made in the calculations.
+
+Modes:
+
+```html
+   <p style='color:green'>Aktiverad</p> - The variable is activated and the color will be shown on the front-end.
+   <br>
+   <p style='color:red'>Deaktiverad</p> - The variable is deactivated and the color will be hidden on the front-end.
+```

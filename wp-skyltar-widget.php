@@ -10,7 +10,7 @@ License: MIT
 
 /**
  * Function Load
- * Include CSS & JQuery files wp-skyltar-css & ... for widget styling
+ * Include CSS & JQuery files wp-skyltar-css & wp-skyltar-jquery for widget styling
  *
  * @since 1.0
  */
