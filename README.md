@@ -22,7 +22,11 @@ wordpress/wp-content/plugins
 
 **4.** Click on the element to set further **options**, for example title, subtitle, color percentages etc.
 
-![Imgur](http://i.imgur.com/2i40IBy.png) ![Imgur](http://i.imgur.com/ftR9FbT.png)
+![Imgur](http://i.imgur.com/2i40IBy.png)
+
+**5.** The front-end view.
+
+![Imgur](http://i.imgur.com/ftR9FbT.png)
 
 ## Options
 
@@ -45,3 +49,11 @@ Enter percentages to enable the color on the front-end. These variables will det
   ***Aktiverad*** - The variable is activated and the color will be shown on the front-end.
 
   ***Deaktiverad*** - The variable is deactivated and the color will be hidden on the front-end.
+
+**Number of colors**
+
+  ***Red***
+  ***Green***
+  ***Blue***
+  ***Yellow***
+  ***White***
